@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-/* 
+/*
  * IBM Terminal keyboard 6110345(122keys)/1392595(102keys)
  * http://geekhack.org/showthread.php?10737-What-Can-I-Do-With-a-Terminal-Model-M
  * http://www.seasip.info/VintagePC/ibm_1391406.html
