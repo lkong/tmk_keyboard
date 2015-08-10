@@ -39,14 +39,14 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,    LBRC,RBRC,BSLS,
     LCAP,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN, QUOT,ENT,
     LSFT,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,      RSFT,
-    LALT,LGUI,               FN0,                RGUI, RALT
+    LCTL,LGUI,               FN0,                RGUI, RCTL
         ),
     [1] = KEYMAP(
     ESC, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, DEL,
     TRNS,TRNS,TRNS,ESC, TRNS,TRNS,TRNS,HOME,UP,  END, PSCR,SLCK,PAUS,PAUS,
     LCTL,TRNS,TRNS,TRNS,TRNS,TRNS,PGUP,LEFT,DOWN,RGHT,TRNS,TRNS,     TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,SPC, PGDN,GRV, FN1, TRNS,APP,           PGUP,
-    TRNS,TRNS,               TRNS,               TRNS,INS
+    RALT,TRNS,               TRNS,               TRNS,RALT
     ),
 
 };
