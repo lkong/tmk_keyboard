@@ -1,4 +1,6 @@
 #include "keymap_common.h"
+#include <util/delay.h>
+#include "bootloader.h"
 
 const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -7,33 +9,33 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* *************** */
     /*  _________________________________________                     _________________________________________  */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* | SHFT |  Q   |  W   |  E   |  R   |  T   |                   |  Y   |  U   |  I   |  O   |  P   | SHFT | */
+    /* | TAB  |  Q   |  W   |  E   |  R   |  T   |                   |  Y   |  U   |  I   |  O   |  P   | BSLS | */
     /* |______|______|______|______|______|______|                   |______|______|______|______|______|______| */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
     /* | CTRL |  A   |  S   |  D   |  F   |  G   |                   |  H   |  J   |  K   |  L   |  ;   |  CMD | */
     /* |______|______|______|______|______|______|                   |______|______|______|______|______|______| */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* |  ALT |  Z   |  X   |  C   |  V   |  B   |                   |  N   |  M   |  ,   |  .   |  /   |  ALT | */
+    /* | SHFT |  Z   |  X   |  C   |  V   |  B   |                   |  N   |  M   |  ,   |  .   |  /   | SHFT | */
     /* |______|______|______|______|______|______|_                 _|______|______|______|______|______|______| */
     /*                               |      |      |               |      |      |                               */
-    /*                               | BSPC | CMD  |               | CTRL | SPC  |                               */
+    /*                               | BSPC | DEL  |               | ENT  | SPC  |                               */
     /*                               |      |      |               |      |      |                               */
     /*                               |______|______|_             _|______|______|                               */
     /*                                 |      |      |           |      |      |                                 */
-    /*                                 | TAB  | SYM  |           | SYM  |  ENT |                                 */
+    /*                                 | LALT | SYM  |           | SYM  | PGUP |                                 */
     /*                                 |______|_LYR__|_         _|_LYR__|______|                                 */
     /*                                   |      |      |       |      |      |                                   */
-    /*                                   |  ESC | NUM  |       | AROW | ALT  |                                   */
+    /*                                   |  ESC | NUM  |       | AROW |PGDN  |                                   */
     /*                                   |______|_LYR__|       |__LYR_|______|                                   */
     /*                                                                                                           */
     /*                                                                                                           */
     /*                                                                                                           */
     KEYMAP(
-           FN11,   Q,   W,   E,   R,   T,  /* */     Y,   U,   I,   O,   P,FN10, \
+           TAB ,   Q,   W,   E,   R,   T,  /* */     Y,   U,   I,   O,   P,BSLS, \
            LCTL,   A,   S,   D,   F,   G,  /* */     H,   J,   K,   L,SCLN,RGUI, \
-           LALT,   Z,   X,   C,   V,   B,  /* */     N,   M,COMM, DOT,SLSH,RALT, \
+           FN11,   Z,   X,   C,   V,   B,  /* */     N,   M,COMM, DOT,SLSH,FN10, \
            /*                */BSPC, DEL,  /* */   ENT, SPC,                     \
-           /*                */ TAB, FN1,  /* */   FN1, PGUP,                     \
+           /*                */ LALT, FN1,  /* */   FN1, PGUP,                     \
            /*                */ ESC, FN2,  /* */   FN2, PGDN),
 
 
@@ -69,7 +71,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*        LALT,SCLN,COMM,   B,   D,   V,  /\* *\/     X,   H,   W, DOT,SLSH,RALT, \ */
     /*        /\*                *\/BSPC,LGUI,  /\* *\/  RCTL, SPC,                     \ */
     /*        /\*                *\/ TAB, FN1,  /\* *\/   FN1, ENT,                     \ */
-    /*        /\*                *\/ ESC, FN2,  /\* *\/   FN4,RGUI), */
+    /*        /\*                *\/ ESC, FN2,  /\* *\/   FN2,RGUI), */
     /* workman */
     KEYMAP(
            FN11,   Q,   D,   R,   W,   B,  /* */     J,   F,   U,   P,SCLN,FN10, \
@@ -77,7 +79,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            LALT,   Z,   X,   M,   C,   V,  /* */     K,   L,COMM, DOT,SLSH,RALT, \
            /*                */BSPC, DEL,  /* */   ENT, SPC,                     \
            /*                */ TAB, FN1,  /* */   FN1, PGUP,                     \
-           /*                */ ESC, FN2,  /* */   FN4, PGDN),
+           /*                */ ESC, FN2,  /* */   FN2, PGDN),
 
 
 
@@ -95,7 +97,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            LCTL,TRNS,TRNS,TRNS,TRNS,TRNS,  /* */  TRNS,TRNS,TRNS,TRNS,TRNS,RGUI, \
            LALT,TRNS,TRNS,TRNS,TRNS,TRNS,  /* */  TRNS,TRNS,TRNS,TRNS,TRNS,RALT, \
            /*                */BSPC,LGUI,  /* */  ENT, SPC,                     \
-           /*                */ FN2, FN1,  /* */   FN1, FN4,                     \
+           /*                */ FN2, FN1,  /* */   FN1, FN2,                     \
            /*                */ ESC, TAB,  /* */   FN2,RGUI),
 
 
@@ -140,16 +142,16 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* ************************* */
     /*  _________________________________________                     _________________________________________  */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* | SHFT |      | HOME |  UP  |  END | PGUP |                   |      |  7   |  8   |  9   |      | SHFT | */
+    /* | TAB  |  1   |  2   |  3   |  4   |  5   |                   |  6   |  7   |  8   |  9   |  0   | SHFT | */
     /* |______|______|______|______|______|______|                   |______|______|______|______|______|______| */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* | CTRL |      |  <-  |      |  ->  | ESC  |                   |      |  4   |  5   |  6   |      |  CMD | */
+    /* | CTRL |      |      |      |      |  FN4 |                   | LEFT | DOWN | UP   | RGHT |      |  CMD | */
     /* |______|______|______|______|______|______|                   |______|______|______|______|______|______| */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* |  ALT |      |      | DOWN |      | PGDN |                   |      |  1   |  2   |  3   |      |  ALT | */
+    /* | SHFT |      |      | DOWN |      | PGDN |                   |      |      |      |      |      |  ALT | */
     /* |______|______|______|______|______|______|_                 _|______|______|______|______|______|______| */
     /*                               |      |      |               |      |      |                               */
-    /*                               |      |      |               |      |   0  |                               */
+    /*                               |      |      |               |      |      |                               */
     /*                               |      |      |               |      |      |                               */
     /*                               |______|______|_             _|______|______|                               */
     /*                                 |      |      |           |      |      |                                 */
@@ -162,10 +164,10 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*                                                                                                           */
     /*                                                                                                           */
     KEYMAP(
-           TRNS,  NO,HOME,  UP, END,PGUP,  /* */    NO,   7,   8,   9,  NO,TRNS, \
-           TRNS,  NO,LEFT, INS,RGHT, ESC,  /* */    NO,   4,   5,   6,  NO,TRNS, \
-           TRNS,  NO,  NO,DOWN,  NO,PGDN,  /* */    NO,   1,   2,   3,  NO,TRNS, \
-           /*                */TRNS,TRNS,  /* */  TRNS,   0,                     \
+           TRNS,   1,   2,   3,   4,   5,  /* */     6,   7,   8,   9,   0,TRNS, \
+           TRNS,  NO,  NO,  NO,  NO,FN4,  /* */  LEFT,DOWN,  UP,RGHT,  NO,TRNS, \
+           TRNS,  NO,  NO,  NO,  NO, NO,  /* */    NO,   NO,   NO,  NO,  NO,TRNS, \
+           /*                */TRNS,TRNS,  /* */  TRNS,  NO,                     \
            /*                */TRNS,  NO,  /* */    NO,  NO,                     \
            /*                */TRNS,TRNS,  /* */  TRNS,TRNS),
 
@@ -216,21 +218,31 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*        /\*               *\/TRNS,TRNS,  /\* *\/  TRNS,TRNS) */
 
 };
+
+/* id for user defined functions & macros */
+enum function_id {
+    TEENSY_KEY,
+};
+
+
 const action_t PROGMEM fn_actions[] = {
     [0] = ACTION_LAYER_TOGGLE(2), // turn mods on :/
 
     [1] = ACTION_LAYER_SET_CLEAR(3),  // symbol layer
     [2] = ACTION_LAYER_SET_CLEAR(4),  // number layer
     [3] = ACTION_LAYER_SET_CLEAR(5),  // Fkeys layer
-    [4] = ACTION_LAYER_MOMENTARY(6),  // arrow layer
+    [4] = ACTION_FUNCTION(TEENSY_KEY),                     // FN4  TEENSY_KEY
+    //[4] = ACTION_LAYER_MOMENTARY(6),  // arrow layer
 
     [5] = ACTION_DEFAULT_LAYER_TOGGLE(1),                  // FN5 = toggle alternate alpha layout
+
+    [6] = ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),              // FN6 = ?
 
     [8] = ACTION_MODS_KEY(MOD_LSFT, KC_DOT),               // FN8 = >
     [9]  = ACTION_MODS_KEY(MOD_RCTL, KC_SPC),              // FN9 = CTRL+SPACE
 
     [10] = ACTION_MODS_TAP_TOGGLE(MOD_RSFT),               // FN10 = shift, or tap for toggle shift
-    [11] = ACTION_MODS_ONESHOT(MOD_LSFT),                  // FN11 = shift, tap for oneshot
+    [11] = ACTION_MODS_TAP_TOGGLE(MOD_LSFT),                  // FN11 = shift, tap for oneshot
 
 
     // Shifted keys
@@ -257,7 +269,25 @@ const action_t PROGMEM fn_actions[] = {
     [29] = ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),             // FN29 = |
     [30] = ACTION_MODS_KEY(MOD_LSFT, KC_QUOT),             // FN30 = "
 
-    [31] = ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN31 = <
-    [6] = ACTION_MODS_KEY(MOD_LSFT, KC_SLSH)               // FN6 = ?
+    [31] = ACTION_MODS_KEY(MOD_LSFT, KC_COMM)             // FN31 = <
 
 };
+
+/*
+ * Defining the Teensy Key action_function
+ */
+void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    // print("action_function called\n");
+    // print("id  = "); phex(id); print("\n");
+    // print("opt = "); phex(opt); print("\n");
+
+    if (id == TEENSY_KEY) {
+        clear_keyboard();
+        print("\n\nJump to bootloader... ");
+        _delay_ms(50);
+        bootloader_jump(); // should not return
+        print("not supported.\n");
+    }
+
+}
