@@ -31,7 +31,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*                                                                                                           */
     /*                                                                                                           */
     KEYMAP(
-           TAB ,   Q,   W,   E,   R,   T,  /* */     Y,   U,   I,   O,   P,BSLS, \
+           TAB ,   Q,   W,   E,   R,   T,  /* */     Y,   U,   I,   O,   P,LBRC, \
            LCTL,   A,   S,   D,   F,   G,  /* */     H,   J,   K,   L,SCLN,RGUI, \
            FN11,   Z,   X,   C,   V,   B,  /* */     N,   M,COMM, DOT,SLSH,FN10, \
            /*                */BSPC, DEL,  /* */   ENT, SPC,                     \
@@ -106,16 +106,16 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* **************** */
     /*  _________________________________________                     _________________________________________  */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* | SHFT |  ~   |  (   |  )   |  +   |  >   |                   |  :   |  &   |  *   |      |  |   | SHFT | */
+    /* |   `  |  !   |  @   |  #   |  $   |  %   |                   |  ^   |  &   |  *   |  (   |  )   | SHFT | */
     /* |______|______|______|______|______|______|                   |______|______|______|______|______|______| */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* | CTRL |  `   |  {   |  }   |  =   |  '   |                   |  "   |  $   |  %   |  ^   |  \   |  CMD | */
+    /* | CTRL |      |      |  {   |  }   |      |                   |      |  _   |  +   |      |      |  CMD | */
     /* |______|______|______|______|______|______|                   |______|______|______|______|______|______| */
     /* |      |      |      |      |      |      |                   |      |      |      |      |      |      | */
-    /* |  ALT |      |  [   |  ]   |  -   |  <   |                   |  /   |  !   |  @   |  #   |  ?   |  ALT | */
+    /* |  ALT |      |      |  [   |  ]   |      |                   |      |  -   |  =   |      |      |  ALT | */
     /* |______|______|______|______|______|______|_                 _|______|______|______|______|______|______| */
     /*                               |      |      |               |      |      |                               */
-    /*                               |  DEL |      |               |      |   _  |                               */
+    /*                               |  DEL |      |               |      |      |                               */
     /*                               |      |      |               |      |      |                               */
     /*                               |______|______|_             _|______|______|                               */
     /*                                 |      |      |           |      |      |                                 */
@@ -128,10 +128,10 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*                                                                                                           */
     /*                                                                                                           */
     KEYMAP(
-           TRNS,FN14,FN25,FN26,PPLS, FN8,  /* */  FN12,FN23,PAST,FN25,FN29,TRNS, \
-           TRNS, GRV,FN16,FN13, EQL,FN30,  /* */  QUOT,FN20,FN21,FN22,BSLS,TRNS, \
-           TRNS,  NO,LBRC,RBRC,MINS,FN31,  /* */  SLSH,FN17,FN18,FN19, FN6,TRNS, \
-           /*                */ DEL,TRNS,  /* */  TRNS,FN28,                     \
+           NUHS,FN17,FN18,FN19,FN20,FN21,  /* */  FN22,FN23,FN24,FN25,FN26,TRNS, \
+           TRNS,  NO,  NO,FN16,FN13, NO,   /* */    NO,FN28,FN12,  NO,  NO,TRNS, \
+           TRNS,  NO,  NO,LBRC,RBRC, NO,   /* */    NO,MINS, EQL,  NO,  NO,TRNS, \
+           /*                */ DEL,TRNS,  /* */  TRNS,TRNS,                     \
            /*                */TRNS, FN3,  /* */   FN3,TRNS,                     \
            /*                */TRNS,  NO,  /* */    NO,TRNS),
 
@@ -246,7 +246,7 @@ const action_t PROGMEM fn_actions[] = {
 
 
     // Shifted keys
-    [12] = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),             // FN12 = :
+    [12] = ACTION_MODS_KEY(MOD_LSFT, KC_EQL),              // FN12 = +
     [13] = ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),             // FN13 = }
     [14] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),              // FN14 = ~
 
